@@ -23,16 +23,14 @@ export interface ValidateOptions {
 export const validate = (
   schema: ZodSchema,
   source: ValidationSource = 'body',
-  options: ValidateOptions = {}
+  _options: ValidateOptions = {}
 ) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const data = req[source];
       
       // Parse and validate data
-      const validated = options.stripUnknown 
-        ? schema.parse(data) 
-        : schema.strict().parse(data);
+      const validated = schema.parse(data);
       
       // Replace request data with validated data (ensures type safety)
       req[source] = validated;
@@ -46,11 +44,12 @@ export const validate = (
           code: err.code,
         }));
 
-        return res.status(StatusCodes.BAD_REQUEST).json({
+        res.status(StatusCodes.BAD_REQUEST).json({
           success: false,
           message: 'Validation failed',
           errors: formattedErrors,
         });
+        return;
       }
       
       next(error);
@@ -63,7 +62,7 @@ export const validate = (
  * @param schemas - Object with schemas for different sources
  */
 export const validateAll = (schemas: Partial<Record<ValidationSource, ZodSchema>>) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const errors: Array<{ source: string; field: string; message: string }> = [];
 
@@ -87,11 +86,12 @@ export const validateAll = (schemas: Partial<Record<ValidationSource, ZodSchema>
       }
 
       if (errors.length > 0) {
-        return res.status(StatusCodes.BAD_REQUEST).json({
+        res.status(StatusCodes.BAD_REQUEST).json({
           success: false,
           message: 'Validation failed',
           errors,
         });
+        return;
       }
 
       next();

@@ -8,7 +8,7 @@ import { AppError, ErrorResponse, ErrorCode } from './types';
 // Import express-async-errors to handle async errors automatically
 import 'express-async-errors';
 
-export const notFoundHandler = (req: Request, res: Response, next: NextFunction) => {
+export const notFoundHandler = (req: Request, _res: Response, next: NextFunction) => {
   const error = AppError.notFound(`Route not found: ${req.originalUrl}`);
   next(error);
 };
