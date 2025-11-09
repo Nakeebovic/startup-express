@@ -1,6 +1,6 @@
 {
   "name": "startup-express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A comprehensive, production-ready Express.js starter package with Zod validation, advanced middleware, and TypeScript-first design",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
