@@ -822,3 +822,11 @@ For more examples, see:
 - [QUICKSTART.md](QUICKSTART.md) - Quick start guide
 - [EXAMPLE.md](EXAMPLE.md) - Complete examples
 
+---
+
+## 👤 Author
+
+**Ahmed El Nakeeb (Nakeebovic)**
+- GitHub: [@Nakeebovic](https://github.com/Nakeebovic)
+- npm: [nakeebovic](https://www.npmjs.com/~nakeebovic)
+

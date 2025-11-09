@@ -340,5 +340,13 @@ By contributing, you agree that your contributions will be licensed under the MI
 
 ---
 
+## 👤 Maintainer
+
+**Ahmed El Nakeeb (Nakeebovic)**
+- GitHub: [@Nakeebovic](https://github.com/Nakeebovic)
+- npm: [nakeebovic](https://www.npmjs.com/~nakeebovic)
+
+---
+
 Thank you for making Startup Express better! 🚀
 

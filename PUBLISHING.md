@@ -344,5 +344,11 @@ npm install startup-express  # In test project
 
 ---
 
-For questions, open an issue or contact maintainers.
+## 👤 Maintainer
+
+**Ahmed El Nakeeb (Nakeebovic)**
+- GitHub: [@Nakeebovic](https://github.com/Nakeebovic)
+- npm: [nakeebovic](https://www.npmjs.com/~nakeebovic)
+
+For questions, open an issue or contact the maintainer.
 

@@ -424,3 +424,11 @@ For more information, see:
 - [GETTING_STARTED.md](GETTING_STARTED.md) - Setup guide
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
 
+---
+
+## 👤 Author
+
+**Ahmed El Nakeeb (Nakeebovic)**
+- GitHub: [@Nakeebovic](https://github.com/Nakeebovic)
+- npm: [nakeebovic](https://www.npmjs.com/~nakeebovic)
+

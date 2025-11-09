@@ -313,5 +313,13 @@ When making changes:
 
 ---
 
+## 👤 Author
+
+**Ahmed El Nakeeb (Nakeebovic)**
+- GitHub: [@Nakeebovic](https://github.com/Nakeebovic)
+- npm: [nakeebovic](https://www.npmjs.com/~nakeebovic)
+
+---
+
 Happy coding! 🚀
 

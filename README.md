@@ -395,7 +395,7 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 
 ## 📄 License
 
-MIT © [Your Name]
+MIT © [Nakeebovic]
 
 ## 🙏 Acknowledgments
 
@@ -405,6 +405,14 @@ Built with these amazing packages:
 - [Winston](https://github.com/winstonjs/winston)
 - [Helmet](https://helmetjs.github.io/)
 - [Morgan](https://github.com/expressjs/morgan)
+
+---
+
+## 👨‍💻 Author
+
+**Ahmed El Nakeeb (Nakeebovic)**
+- GitHub: [@Nakeebovic](https://github.com/Nakeebovic)
+- npm: [nakeebovic](https://www.npmjs.com/~nakeebovic)
 
 ---
 

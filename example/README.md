@@ -82,3 +82,11 @@ After trying these examples, check out:
 - [Full Documentation](../README.md)
 - [Complete Example with Database](../EXAMPLE.md)
 
+---
+
+## 👤 Author
+
+**Ahmed Nakeeb (Nakeebovic)**
+- GitHub: [@Nakeebovic](https://github.com/Nakeebovic)
+- npm: [nakeebovic](https://www.npmjs.com/~nakeebovic)
+

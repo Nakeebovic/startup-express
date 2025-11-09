@@ -621,3 +621,11 @@ For more information, see:
 - [API_REFERENCE.md](API_REFERENCE.md) - Complete API reference
 - [QUICKSTART.md](QUICKSTART.md) - Quick start guide
 
+---
+
+## 👤 Author
+
+**Ahmed El Nakeeb (Nakeebovic)**
+- GitHub: [@Nakeebovic](https://github.com/Nakeebovic)
+- npm: [nakeebovic](https://www.npmjs.com/~nakeebovic)
+
