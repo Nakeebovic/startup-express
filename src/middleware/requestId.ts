@@ -13,22 +13,18 @@ export interface RequestIdOptions {
  * Useful for tracking requests through logs and debugging
  */
 export const requestIdMiddleware = (options: RequestIdOptions = {}) => {
-  const {
-    header = 'X-Request-Id',
-    generator = () => nanoid(21),
-  } = options;
+  const { header = 'X-Request-Id', generator = () => nanoid(21) } = options;
 
   return (req: Request, res: Response, next: NextFunction) => {
     // Use existing request ID from header or generate new one
     const requestId = (req.headers[header.toLowerCase()] as string) || generator();
-    
+
     // Attach to request object
     req.requestId = requestId;
-    
+
     // Add to response headers
     res.setHeader(header, requestId);
-    
+
     next();
   };
 };
-

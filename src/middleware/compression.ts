@@ -13,4 +13,3 @@ export const compressionMiddleware = (options?: Parameters<typeof compression>[0
     ...options,
   });
 };
-

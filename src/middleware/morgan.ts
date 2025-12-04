@@ -11,7 +11,7 @@ const stream = {
 
 export const morganMiddleware = (format?: string) => {
   const logFormat = format || (config.isDevelopment ? 'dev' : 'combined');
-  
+
   return morgan(logFormat, {
     stream,
     skip: (req) => {
@@ -20,4 +20,3 @@ export const morganMiddleware = (format?: string) => {
     },
   });
 };
-

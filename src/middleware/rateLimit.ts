@@ -22,4 +22,3 @@ export const strictRateLimitMiddleware = (options?: Partial<Options>) => {
     ...options,
   });
 };
-

@@ -7,4 +7,3 @@ export { jsonMiddleware, urlencodedMiddleware } from './bodyParser';
 export { requestIdMiddleware } from './requestId';
 export { timingMiddleware } from './timing';
 export { sanitizeMiddleware } from './sanitize';
-

@@ -28,17 +28,17 @@ export const validate = (
   return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const data = req[source];
-      
+
       // Parse and validate data
       const validated = schema.parse(data);
-      
+
       // Replace request data with validated data (ensures type safety)
       req[source] = validated;
-      
+
       next();
     } catch (error) {
-      if (error instanceof ZodError) {
-        const formattedErrors = error.errors.map((err) => ({
+      if (error instanceof ZodError && Array.isArray(error.issues)) {
+        const formattedErrors = error.issues.map((err) => ({
           field: err.path.join('.'),
           message: err.message,
           code: err.code,
@@ -51,7 +51,7 @@ export const validate = (
         });
         return;
       }
-      
+
       next(error);
     }
   };
@@ -70,17 +70,19 @@ export const validateAll = (schemas: Partial<Record<ValidationSource, ZodSchema>
       for (const [source, schema] of Object.entries(schemas)) {
         try {
           const data = req[source as ValidationSource];
+          // Parse and validate data
+          // ZodError typed to any so we can access errors in generic Zod v4+ way
           const validated = schema.parse(data);
           req[source as ValidationSource] = validated;
-        } catch (error) {
-          if (error instanceof ZodError) {
-            error.errors.forEach((err) => {
+        } catch (error: unknown) {
+          if (error instanceof ZodError && Array.isArray(error.issues)) {
+            for (const issue of error.issues) {
               errors.push({
                 source,
-                field: err.path.join('.'),
-                message: err.message,
+                field: issue.path.join('.'),
+                message: issue.message,
               });
-            });
+            }
           }
         }
       }
@@ -132,13 +134,13 @@ export const createValidatedHandler = <TBody = any, TQuery = any, TParams = any>
 export const commonSchemas = {
   /** MongoDB ObjectId */
   objectId: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid ObjectId'),
-  
+
   /** UUID v4 */
   uuid: z.string().uuid(),
-  
+
   /** Email */
   email: z.string().email().toLowerCase(),
-  
+
   /** Strong password */
   password: z
     .string()
@@ -147,19 +149,19 @@ export const commonSchemas = {
     .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
     .regex(/[0-9]/, 'Password must contain at least one number')
     .regex(/[^a-zA-Z0-9]/, 'Password must contain at least one special character'),
-  
+
   /** URL */
   url: z.string().url(),
-  
+
   /** Date string (ISO 8601) */
   dateString: z.string().datetime(),
-  
+
   /** Pagination */
   pagination: z.object({
     page: z.coerce.number().int().positive().default(1),
     limit: z.coerce.number().int().positive().max(100).default(10),
   }),
-  
+
   /** Search query */
   search: z.object({
     q: z.string().min(1).optional(),
@@ -185,9 +187,7 @@ export const createEnumSchema = <T extends readonly [string, ...string[]]>(
   values: T,
   fieldName: string = 'value'
 ) => {
-  return z.enum(values, {
-    errorMap: () => ({
-      message: `${fieldName} must be one of: ${values.join(', ')}`,
-    }),
+  return z.enum(values, undefined).refine((val) => values.includes(val), {
+    message: `${fieldName} must be one of: ${values.join(', ')}`,
   });
 };

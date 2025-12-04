@@ -11,4 +11,3 @@ export const corsMiddleware = (options?: cors.CorsOptions) => {
 
   return cors(defaultOptions);
 };
-

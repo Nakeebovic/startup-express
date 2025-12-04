@@ -45,4 +45,3 @@ if (config.isProduction) {
 }
 
 export default logger;
-

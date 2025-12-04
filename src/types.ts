@@ -63,11 +63,7 @@ export interface StartupExpressConfig {
   };
 }
 
-export type AsyncHandler = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => Promise<any>;
+export type AsyncHandler = (req: Request, res: Response, next: NextFunction) => Promise<any>;
 
 export enum ErrorCode {
   // Client Errors (4xx)
@@ -78,7 +74,7 @@ export enum ErrorCode {
   CONFLICT = 'CONFLICT',
   VALIDATION_ERROR = 'VALIDATION_ERROR',
   RATE_LIMIT_EXCEEDED = 'RATE_LIMIT_EXCEEDED',
-  
+
   // Server Errors (5xx)
   INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR',
   SERVICE_UNAVAILABLE = 'SERVICE_UNAVAILABLE',

@@ -89,10 +89,7 @@ describe('Validators', () => {
         id: z.string().uuid(),
       });
 
-      const req = mockRequest(
-        { id: '123e4567-e89b-12d3-a456-426614174000' },
-        'params'
-      );
+      const req = mockRequest({ id: '123e4567-e89b-12d3-a456-426614174000' }, 'params');
       const res = mockResponse();
 
       const middleware = validate(schema, 'params');
@@ -162,7 +159,7 @@ describe('Validators', () => {
     it('should validate password', () => {
       const validPassword = 'SecurePass123!';
       expect(() => commonSchemas.password.parse(validPassword)).not.toThrow();
-      
+
       expect(() => commonSchemas.password.parse('short')).toThrow();
       expect(() => commonSchemas.password.parse('nouppercase123!')).toThrow();
       expect(() => commonSchemas.password.parse('NOLOWERCASE123!')).toThrow();
@@ -192,10 +189,9 @@ describe('Validators', () => {
   describe('createPaginationSchema', () => {
     it('should create pagination schema with custom max', () => {
       const schema = createPaginationSchema(50);
-      
+
       expect(() => schema.parse({ limit: 30 })).not.toThrow();
       expect(() => schema.parse({ limit: 60 })).toThrow();
     });
   });
 });
-

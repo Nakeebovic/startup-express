@@ -42,7 +42,7 @@ export const sendPaginated = <T>(
   req?: Request
 ): Response => {
   const totalPages = Math.ceil(pagination.total / pagination.limit);
-  
+
   const paginationMeta: PaginationMeta = {
     page: pagination.page,
     limit: pagination.limit,
@@ -112,7 +112,7 @@ export const createPaginationMeta = (
   total: number
 ): PaginationMeta => {
   const totalPages = Math.ceil(total / limit);
-  
+
   return {
     page,
     limit,

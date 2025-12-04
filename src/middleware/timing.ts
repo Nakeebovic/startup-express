@@ -16,12 +16,12 @@ export const timingMiddleware = (options: { slowRequestThreshold?: number } = {}
     const originalEnd = res.end;
     res.end = function (this: Response, ...args: any[]): Response {
       const duration = Date.now() - startTime;
-      
+
       // Set response time header if headers haven't been sent yet
       if (!res.headersSent) {
         res.setHeader('X-Response-Time', `${duration}ms`);
       }
-      
+
       // Log slow requests
       if (duration > slowRequestThreshold) {
         logger.warn('Slow request detected', {
@@ -31,7 +31,7 @@ export const timingMiddleware = (options: { slowRequestThreshold?: number } = {}
           requestId: req.requestId,
         });
       }
-      
+
       // Call original end method
       return originalEnd.apply(this, args as any);
     };
@@ -39,4 +39,3 @@ export const timingMiddleware = (options: { slowRequestThreshold?: number } = {}
     next();
   };
 };
-

@@ -43,7 +43,7 @@ function sanitizeObject(obj: any): any {
     if (key.startsWith('$')) {
       continue;
     }
-    
+
     sanitized[key] = sanitizeObject(value);
   }
 
@@ -63,7 +63,6 @@ function sanitizeValue(value: any): any {
   value = value.replace(/\$ne/gi, '');
   value = value.replace(/\$gt/gi, '');
   value = value.replace(/\$lt/gi, '');
-  
+
   return value;
 }
-

@@ -59,4 +59,3 @@ describe('Config utilities', () => {
     });
   });
 });
-

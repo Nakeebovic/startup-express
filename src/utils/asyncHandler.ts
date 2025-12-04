@@ -13,4 +13,3 @@ export const catchAsync = (
 
 // Alias for consistency with documentation
 export const asyncHandler = catchAsync;
-

@@ -20,10 +20,7 @@ import { logger } from './logger';
  * @param app - Express application instance
  * @param config - Configuration options
  */
-export const setupExpress = (
-  app: Express,
-  config: StartupExpressConfig = {}
-): Express => {
+export const setupExpress = (app: Express, config: StartupExpressConfig = {}): Express => {
   // Setup global error handlers
   setupGlobalErrorHandlers();
 
@@ -120,7 +117,7 @@ export const setupExpress = (
 
   // Note: 404 and error handlers should be added after all routes
   // This function returns a configured app, but routes should be added before calling addErrorHandlers()
-  
+
   return app;
 };
 
@@ -134,4 +131,3 @@ export const addErrorHandlers = (app: Express): Express => {
   logger.info('✓ Error handlers registered');
   return app;
 };
-

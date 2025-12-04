@@ -29,7 +29,7 @@ export const errorHandler = (
     statusCode = StatusCodes.BAD_REQUEST;
     message = 'Validation failed';
     errorCode = ErrorCode.VALIDATION_ERROR;
-    details = err.errors.map((e) => ({
+    details = err.issues.map((e) => ({
       field: e.path.join('.'),
       message: e.message,
       code: e.code,
@@ -126,4 +126,3 @@ export const setupGlobalErrorHandlers = () => {
     process.exit(1);
   });
 };
-

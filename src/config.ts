@@ -32,4 +32,3 @@ export const getEnvBoolean = (key: string, defaultValue: boolean = false): boole
   if (value === undefined) return defaultValue;
   return value.toLowerCase() === 'true';
 };
-

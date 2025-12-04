@@ -19,7 +19,7 @@ describe('setupExpress', () => {
     addErrorHandlers(app);
 
     const response = await request(app).get('/health');
-    
+
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('success', true);
     expect(response.body).toHaveProperty('message', 'Server is healthy');
@@ -52,10 +52,9 @@ describe('addErrorHandlers', () => {
     addErrorHandlers(app);
 
     const response = await request(app).get('/nonexistent-route');
-    
+
     expect(response.status).toBe(404);
     expect(response.body).toHaveProperty('success', false);
     expect(response.body.message).toContain('Route not found');
   });
 });
-

@@ -13,4 +13,3 @@ export const helmetMiddleware = (options?: Parameters<typeof helmet>[0]) => {
     ...options,
   });
 };
-
