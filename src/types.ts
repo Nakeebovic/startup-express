@@ -132,11 +132,9 @@ export class AppError extends Error {
 }
 
 // Extend Express Request type to include custom properties
-declare global {
-  namespace Express {
-    interface Request {
-      requestId?: string;
-      startTime?: number;
-    }
+declare module 'express-serve-static-core' {
+  interface Request {
+    requestId?: string;
+    startTime?: number;
   }
 }
